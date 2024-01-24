@@ -1,10 +1,8 @@
-import java.util.ArrayList;
-import java.util.List;
-
 public class Baraja {
-    private List<Carta> cartas;
+    private Carta[] cartas;
 
     public Baraja() {
+        cartas = new Carta[40]; // Una array con espacio para 40 cartas
         inicializarBaraja();
     }
 
@@ -12,15 +10,27 @@ public class Baraja {
         String[] palos = {"Oros", "Copas", "Espadas", "Bastos"};
         String[] numeros = {"1", "2", "3", "4", "5", "6", "7", "Sota", "Caballo", "Rey"};
 
-        cartas = new ArrayList<>();
+        int contador = 0;
         for (String palo : palos) {
             for (String numero : numeros) {
-                cartas.add(new Carta(palo, numero));
+                cartas[contador++] = new Carta(palo, numero); // Añade nuevas cartas a la array
             }
         }
     }
 
-    public List<Carta> getCartas() {
+    public Carta[] getCartas() {
         return cartas;
     }
+}
+
+class Carta {
+    private String palo;
+    private String numero;
+
+    public Carta(String palo, String numero) {
+        this.palo = palo;
+        this.numero = numero;
+    }
+
+    // Métodos getters, setters y otros métodos que necesites
 }
